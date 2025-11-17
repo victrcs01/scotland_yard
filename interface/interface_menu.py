@@ -122,7 +122,7 @@ class InterfaceMenu(ctk.CTk): # Herda de ctk.CTk
             card.pack(fill="x", pady=5)
             
             rb = ctk.CTkRadioButton(card, 
-                                    text=f"{titulo_caso} [{dificuldade}]", 
+                                    text=f"{titulo_caso}", 
                                     variable=self.caso_selecionado, 
                                     value=caso_id, 
                                     font=("Segoe UI", 16, "bold"))
@@ -168,7 +168,7 @@ class InterfaceMenu(ctk.CTk): # Herda de ctk.CTk
         if caso_id not in jogador_data["casos_concluidos"]:
             jogador_data["casos_concluidos"].append(caso_id)
             self.dados_jogadores[self.nome_jogador_atual] = jogador_data
-            fileManager.salvar_dados_jogadores(self.dados_jogadores)
+            self.fm.salvar_dados_jogadores(self.dados_jogadores)
             
     def reabrir_menu(self):
         if self.frame_jogo_atual:

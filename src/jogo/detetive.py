@@ -1,4 +1,5 @@
 from src.jogo.personagens.suspeito import Suspeito
+from src.jogo.pistas.pista_anotacao import PistaAnotacao
 
 class Detetive:
     def __init__(self, nome):
@@ -23,6 +24,13 @@ class Detetive:
 
     def adicionar_pista(self, pista):
         self.inventario.append(pista)
+
+    def fazer_anotacao(self, texto_anotacao):
+        if not texto_anotacao:
+            return "Você não escreveu nada para anotar."
+        nova_anotacao = PistaAnotacao(texto_anotacao)
+        self.inventario.append(nova_anotacao)
+        return "Sua anotação foi adicionada ao caderno."
         
     def falar_com_npc(self, nome_npc):
         if not nome_npc:

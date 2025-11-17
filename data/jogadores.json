@@ -3,5 +3,13 @@
     "casos_concluidos": [
       "caso_1"
     ]
+  },
+  "victor": {
+    "casos_concluidos": []
+  },
+  "Victor": {
+    "casos_concluidos": [
+      "caso_1"
+    ]
   }
 }
