@@ -1,23 +1,44 @@
+from typing import Dict, Any
 from src.jogo.detetive import Detetive
 from src.jogo.personagens.suspeito import Suspeito
 from src.jogo.personagens.testemunha import Testemunha
 from src.jogo.local import Local
+from src.jogo.pistas.pista import Pista
+from src.jogo.personagens.npc import NPC
 from src.jogo.pistas.pista_fisica import PistaFisica
 from src.jogo.pistas.pista_verbal import PistaVerbal
 from src.jogo.pistas.pista_documental import PistaDocumental
 
 class Caso:
-    def __init__(self, nome_detetive, dados_caso):
-        self.detetive = Detetive(nome_detetive)
-        self.culpado_id = dados_caso["culpado_id"]
+    """Representa a lógica central de um caso, carregando e conectando todos os elementos do jogo."""
+
+    def __init__(self, nome_detetive: str, dados_caso: Dict[str, Any]) -> None:
+        """
+        Inicializa um objeto Caso.
+
+        Args:
+            nome_detetive (str): O nome do detetive que está jogando.
+            dados_caso (Dict[str, Any]): O dicionário com todos os dados do caso, carregado do JSON.
+        """
+        self.detetive: Detetive = Detetive(nome_detetive)
+        self.culpado_id: str = dados_caso["culpado_id"]
         
-        self.objetos_locais = {}
-        self.objetos_npcs = {}
-        self.objetos_pistas = {}
+        self.objetos_locais: Dict[str, Local] = {}
+        self.objetos_npcs: Dict[str, NPC] = {}
+        self.objetos_pistas: Dict[str, Pista] = {}
 
         self.carregar_cenario_de_json(dados_caso)
 
-    def carregar_cenario_de_json(self, dados_caso):
+    def carregar_cenario_de_json(self, dados_caso: Dict[str, Any]) -> None:
+        """
+        Carrega e constrói o cenário do jogo (pistas, NPCs, locais) a partir de um dicionário.
+
+        Args:
+            dados_caso (Dict[str, Any]): O dicionário com os dados do caso.
+
+        Raises:
+            ValueError: Se o local inicial definido no JSON for inválido.
+        """
         
         # 1. Criar todas as Pistas
         for dados_pista in dados_caso["pistas"]:
@@ -56,7 +77,7 @@ class Caso:
             local_obj = Local(dados_local["nome"], dados_local["descricao"])
             self.objetos_locais[dados_local["id"]] = local_obj
             
-        # 4. Conectar os Locais
+        # 4. Conectar os Locais e adicionar NPCs/Pistas
         for dados_local in dados_caso["locais"]:
             local_atual_obj = self.objetos_locais[dados_local["id"]]
 
@@ -76,7 +97,8 @@ class Caso:
                     local_atual_obj.pistas.append(pista_obj)
                 
         # 5. Definir ponto de partida
-        self.detetive.local_atual = self.objetos_locais.get(dados_caso["local_inicial"])
+        local_inicial_id = dados_caso.get("local_inicial")
+        self.detetive.local_atual = self.objetos_locais.get(local_inicial_id)
         
         if self.detetive.local_atual is None:
-            raise ValueError(f"Local inicial '{dados_caso.get('local_inicial')}' não encontrado ou inválido no JSON!")
+            raise ValueError(f"Local inicial '{local_inicial_id}' não encontrado ou inválido no JSON!")
