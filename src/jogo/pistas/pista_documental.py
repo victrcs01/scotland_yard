@@ -1,10 +1,9 @@
 from src.jogo.pistas.pista import Pista
 
-class PistaFisica(Pista):
+class PistaDocumental(Pista):
     def __init__(self, nome, descricao, local_encontrado):
         super().__init__(nome, descricao)
         self.local_encontrado = local_encontrado
 
     def examinar(self):
-        return f"[OBJETO] {self.nome} (Encontrado em: {self.local_encontrado})\nAnálise: {self.descricao}"
-
+        return f"[DOCUMENTO] {self.nome} (Local: {self.local_encontrado})\nConteúdo: {self.descricao}"

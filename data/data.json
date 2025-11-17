@@ -1,0 +1,373 @@
+{
+  "casos": {
+    "caso_1": {
+      "titulo": "O Caso do Gabarito Desaparecido",
+      "dificuldade": "Fácil",
+      "local_inicial": "gabinete_prof",
+      "culpado_id": "aluno_aflito",
+      "locais": [
+        {
+          "id": "gabinete_prof",
+          "nome": "Gabinete do Professor",
+          "descricao": "A sala do Prof. Barreto. Livros empilhados, um cheiro forte de café e uma gaveta arrombada.",
+          "conexoes": {
+            "sul": "corredor_dept"
+          },
+          "npcs_presentes": ["prof_barreto"],
+          "pistas_presentes": ["gaveta_arrombada", "lata_energetico"]
+        },
+        {
+          "id": "corredor_dept",
+          "nome": "Corredor do Departamento",
+          "descricao": "Um corredor longo e silencioso. As portas dos gabinetes estão alinhadas.",
+          "conexoes": {
+            "norte": "gabinete_prof",
+            "leste": "copa",
+            "oeste": "sala_monitores"
+          },
+          "npcs_presentes": ["aluno_aflito"],
+          "pistas_presentes": []
+        },
+        {
+          "id": "copa",
+          "nome": "Copa",
+          "descricao": "Uma pequena cozinha com uma máquina de café barulhenta.",
+          "conexoes": {
+            "oeste": "corredor_dept"
+          },
+          "npcs_presentes": ["faxineiro_carlos"],
+          "pistas_presentes": []
+        },
+        {
+          "id": "sala_monitores",
+          "nome": "Sala dos Monitores",
+          "descricao": "Uma sala pequena, cheia de computadores e quadros-brancos.",
+          "conexoes": {
+            "leste": "corredor_dept"
+          },
+          "npcs_presentes": ["monitor_chefe"],
+          "pistas_presentes": []
+        }
+      ],
+      "npcs": [
+        {
+          "id": "prof_barreto",
+          "nome": "Prof. Barreto",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "Um desastre! Minha gaveta foi arrombada! Odeio esse energético 'Volt' que largaram aqui."
+        },
+        {
+          "id": "faxineiro_carlos",
+          "nome": "Faxineiro Carlos",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "Boa noite, detetive. Noite agitada ontem...",
+          "pista_associada": "depoimento_faxineiro"
+        },
+        {
+          "id": "monitor_chefe",
+          "nome": "Monitor Chefe",
+          "tipo": "Suspeito",
+          "culpado": false,
+          "alibi": "estava aqui na sala estudando até as 21h.",
+          "dialogo_inicial": "Eu tenho a chave, mas jamais faria isso! Fiquei aqui até as 21h.",
+          "pista_associada": "depoimento_monitor"
+        },
+        {
+          "id": "aluno_aflito",
+          "nome": "Aluno Aflito",
+          "tipo": "Suspeito",
+          "culpado": true,
+          "alibi": "Eu... eu estava na biblioteca!",
+          "dialogo_inicial": "Detetive? O que faz aqui? Estou só... esperando o professor."
+        }
+      ],
+      "pistas": [
+        {
+          "id": "gaveta_arrombada",
+          "nome": "Gaveta Arrombada",
+          "tipo": "Fisica",
+          "descricao": "A madeira ao redor da fechadura está lascada. Foi aberta à força.",
+          "local_encontrado": "Gabinete do Professor"
+        },
+        {
+          "id": "lata_energetico",
+          "nome": "Lata de Energético 'Volt'",
+          "tipo": "Fisica",
+          "descricao": "Uma lata amassada de energético 'Volt'. O Prof. Barreto mencionou que odeia essa marca.",
+          "local_encontrado": "Gabinete do Professor"
+        },
+        {
+          "id": "depoimento_faxineiro",
+          "nome": "Depoimento do Faxineiro",
+          "tipo": "Verbal",
+          "descricao": "Eu vi o 'Aluno Aflito' saindo do corredor dos professores ontem bem tarde, por volta das 22h. Ele quase me derrubou e carregava uma lata de energético 'Volt'.",
+          "fonte": "Faxineiro Carlos"
+        },
+        {
+          "id": "depoimento_monitor",
+          "nome": "Depoimento do Monitor",
+          "tipo": "Verbal",
+          "descricao": "O 'Aluno Aflito' passou aqui mais cedo perguntando se o professor já tinha ido embora. Ele parecia muito nervoso.",
+          "fonte": "Monitor Chefe"
+        }
+      ]
+    },
+    "caso_2": {
+      "titulo": "O Caso da Pesquisa Sabotada",
+      "dificuldade": "Médio",
+      "local_inicial": "lab_principal",
+      "culpado_id": "dr_jonas",
+      "locais": [
+        {
+          "id": "lab_principal",
+          "nome": "Laboratório Principal",
+          "descricao": "Equipamento de ponta, mas agora tudo cheira a ácido. As placas de cultura estão arruinadas.",
+          "conexoes": {
+            "sul": "corredor_predio"
+          },
+          "npcs_presentes": [],
+          "pistas_presentes": ["amostras_contaminadas", "cracha_perdido"]
+        },
+        {
+          "id": "corredor_predio",
+          "nome": "Corredor do Prédio",
+          "descricao": "Um corredor estéril e branco. As luzes fluorescentes zumbem.",
+          "conexoes": {
+            "norte": "lab_principal",
+            "leste": "almoxarifado",
+            "oeste": "escritorio_eva",
+            "sul": "sala_jonas"
+          },
+          "npcs_presentes": ["estagiario"],
+          "pistas_presentes": []
+        },
+        {
+          "id": "almoxarifado",
+          "nome": "Almoxarifado de Químicos",
+          "descricao": "Prateleiras cheias de frascos. Um cheiro forte de reagentes.",
+          "conexoes": {
+            "oeste": "corredor_predio"
+          },
+          "npcs_presentes": ["tecnico_lab"],
+          "pistas_presentes": ["registro_retirada"]
+        },
+        {
+          "id": "escritorio_eva",
+          "nome": "Escritório da Dra. Eva",
+          "descricao": "Uma sala organizada, com um computador ligado.",
+          "conexoes": {
+            "leste": "corredor_predio"
+          },
+          "npcs_presentes": ["dra_eva"],
+          "pistas_presentes": ["email_vitima"]
+        },
+        {
+          "id": "sala_jonas",
+          "nome": "Sala do Dr. Jonas",
+          "descricao": "Uma sala bagunçada, papéis espalhados. Parece que alguém saiu com pressa.",
+          "conexoes": {
+            "norte": "corredor_predio"
+          },
+          "npcs_presentes": ["dr_jonas"],
+          "pistas_presentes": []
+        }
+      ],
+      "npcs": [
+        {
+          "id": "dra_eva",
+          "nome": "Dra. Eva",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "Minha pesquisa de anos! Arruinada! Só pode ter sido o Jonas, ele sempre foi invejoso."
+        },
+        {
+          "id": "tecnico_lab",
+          "nome": "Técnico de Lab",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "Eu só controlo o estoque. Se quiser ver o livro de registros, fique à vontade."
+        },
+        {
+          "id": "estagiario",
+          "nome": "Estagiário",
+          "tipo": "Suspeito",
+          "culpado": false,
+          "alibi": "passei o dia na biblioteca.",
+          "dialogo_inicial": "Meu crachá? Eu o perdi ontem! Avisei a segurança hoje de manhã!",
+          "pista_associada": "depoimento_estagiario"
+        },
+        {
+          "id": "dr_jonas",
+          "nome": "Dr. Jonas",
+          "tipo": "Suspeito",
+          "culpado": true,
+          "alibi": "estava trabalhando na minha sala, como sempre.",
+          "dialogo_inicial": "Sabotagem? Que absurdo! A pesquisa da Eva era falha desde o início."
+        }
+      ],
+      "pistas": [
+        {
+          "id": "amostras_contaminadas",
+          "nome": "Amostras Contaminadas",
+          "tipo": "Fisica",
+          "descricao": "Análise preliminar indica contaminação por um reagente ácido (Reagente X).",
+          "local_encontrado": "Laboratório Principal"
+        },
+        {
+          "id": "cracha_perdido",
+          "nome": "Crachá Perdido (Pista Falsa)",
+          "tipo": "Fisica",
+          "descricao": "Um crachá de acesso Nível 1, pertencente ao 'Estagiário'.",
+          "local_encontrado": "Laboratório Principal"
+        },
+        {
+          "id": "depoimento_estagiario",
+          "nome": "Depoimento do Estagiário",
+          "tipo": "Verbal",
+          "descricao": "Eu juro, passei o dia todo na biblioteca, nem entrei no laboratório. Podem checar as câmeras de lá!",
+          "fonte": "Estagiário"
+        },
+        {
+          "id": "registro_retirada",
+          "nome": "Registro de Retirada",
+          "tipo": "Documental",
+          "descricao": "Livro de registro. Mostra que o 'Dr. Jonas' retirou um frasco de 'Reagente X' às 19:30 de ontem.",
+          "local_encontrado": "Almoxarifado"
+        },
+        {
+          "id": "email_vitima",
+          "nome": "E-mail da Vítima",
+          "tipo": "Documental",
+          "descricao": "Um e-mail da Dra. Eva para o Dr. Jonas: 'Jonas, estou te avisando, minha pesquisa será publicada primeiro. Não adianta tentar competir.'",
+          "local_encontrado": "Escritório da Dra. Eva"
+        }
+      ]
+    },
+    "caso_3": {
+      "titulo": "O Caso do Servidor Violado",
+      "dificuldade": "Difícil",
+      "local_inicial": "corredor_ti",
+      "culpado_id": "aluno_esquecido",
+      "locais": [
+        {
+          "id": "data_center",
+          "nome": "Data Center",
+          "descricao": "O ar é gelado. Racks de servidores zumbem. Um terminal está logado com acesso de administrador.",
+          "conexoes": {
+            "sul": "corredor_ti"
+          },
+          "npcs_presentes": [],
+          "pistas_presentes": ["log_acesso_fisico"]
+        },
+        {
+          "id": "corredor_ti",
+          "nome": "Corredor de TI",
+          "descricao": "Silencioso, exceto pelo clique-clique de uma câmera de segurança no canto.",
+          "conexoes": {
+            "norte": "data_center",
+            "leste": "sala_admin",
+            "oeste": "lab_ia"
+          },
+          "npcs_presentes": ["aluno_esquecido"],
+          "pistas_presentes": ["log_camera"]
+        },
+        {
+          "id": "sala_admin",
+          "nome": "Sala do Administrador",
+          "descricao": "Monitores por toda parte. A mesa do SysAdmin está impecável.",
+          "conexoes": {
+            "oeste": "corredor_ti"
+          },
+          "npcs_presentes": ["sysadmin"],
+          "pistas_presentes": ["keylogger_fisico"]
+        },
+        {
+          "id": "lab_ia",
+          "nome": "Laboratório de IA",
+          "descricao": "Um espaço colaborativo com quadros-brancos cobertos de equações.",
+          "conexoes": {
+            "leste": "corredor_ti"
+          },
+          "npcs_presentes": ["aluna_brilhante", "prof_orientador"],
+          "pistas_presentes": ["postit_criptografado"]
+        }
+      ],
+      "npcs": [
+        {
+          "id": "prof_orientador",
+          "nome": "Professor Orientador",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "Roubaram o protótipo! Anos de trabalho! O acesso só pode ter vindo da sala do SysAdmin."
+        },
+        {
+          "id": "sysadmin",
+          "nome": "SysAdmin",
+          "tipo": "Suspeito",
+          "culpado": false,
+          "alibi": "estava em casa jogando online, podem checar meus logs da Steam!",
+          "dialogo_inicial": "Impossível! Meu cartão deve ter sido clonado! Aliás, ele sumiu da minha mesa ontem...",
+          "pista_associada": "depoimento_sysadmin"
+        },
+        {
+          "id": "aluna_brilhante",
+          "nome": "Aluna Brilhante",
+          "tipo": "Suspeito",
+          "culpado": false,
+          "alibi": "estava no laboratório, mas trabalhando no meu próprio projeto.",
+          "dialogo_inicial": "Acesso? Ah, sim, eu consegui 'vazar' meus dados de simulação do cluster, mas não toquei no servidor do protótipo!",
+          "pista_associada": "depoimento_aluna"
+        },
+        {
+          "id": "aluno_esquecido",
+          "nome": "Aluno Esquecido",
+          "tipo": "Suspeito",
+          "culpado": true,
+          "alibi": "Eu... eu vim procurar um HD que perdi, só isso.",
+          "dialogo_inicial": "Detetive? Eu só vim procurar um HD que esqueci aqui semana passada."
+        }
+      ],
+      "pistas": [
+        {
+          "id": "log_acesso_fisico",
+          "nome": "Log de Acesso Físico",
+          "tipo": "Documental",
+          "descricao": "A porta do Data Center foi aberta às 02:05 da manhã. Acesso liberado pelo cartão do 'SysAdmin'.",
+          "local_encontrado": "Data Center"
+        },
+        {
+          "id": "depoimento_sysadmin",
+          "nome": "Depoimento do SysAdmin",
+          "tipo": "Verbal",
+          "descricao": "Meu cartão ficou na minha mesa ontem o dia todo... O 'Aluno Esquecido' veio aqui mais cedo procurar um HD perdido, ele estava muito agitado.",
+          "fonte": "SysAdmin"
+        },
+        {
+          "id": "keylogger_fisico",
+          "nome": "Keylogger Físico",
+          "tipo": "Fisica",
+          "descricao": "Um pequeno dispositivo USB conectado entre o teclado e o PC do SysAdmin. Capturou a senha mestra.",
+          "local_encontrado": "Sala do Administrador"
+        },
+        {
+          "id": "postit_criptografado",
+          "nome": "Post-it (Pista Falsa)",
+          "tipo": "Fisica",
+          "descricao": "Anotações complexas de IA e a frase: 'Consegui acesso... hora de vazar.'",
+          "local_encontrado": "Laboratório de IA"
+        },
+        {
+          "id": "depoimento_aluna",
+          "nome": "Depoimento da Aluna",
+          "tipo": "Verbal",
+          "descricao": "'Vazar'? Ah, isso! Eu consegui 'vazar' meus dados de simulação do *cluster* para o meu notebook. Não tem nada a ver com o *servidor* do protótipo!",
+          "fonte": "Aluna Brilhante"
+        },
+        {
+          "id": "log_camera",
+          "nome": "Log da Câmera de Segurança",
+          "tipo": "Documental",
+          "descricao": "Câmera do corredor. Às 01:50, o 'Aluno Esquecido' é visto indo à 'Sala do Administrador'. Às 01:55, ele sai. Às 02:04, ele é visto entrando no 'Data Center'.",
+          "local_encontrado": "Corredor de TI"
+        }
+      ]
+    }
+  }
+}
