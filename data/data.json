@@ -368,6 +368,359 @@
           "local_encontrado": "Corredor de TI"
         }
       ]
+    },
+    "caso_4": {
+      "titulo": "O Caso da Tese Duplicada",
+      "dificuldade": "Difícil",
+      "local_inicial": "sala_prof_letras",
+      "culpado_id": "aluno_manipulador",
+      "locais": [
+        {
+          "id": "sala_prof_letras",
+          "nome": "Gabinete da Profa. Helena",
+          "descricao": "Uma sala impecável. Sobre a mesa, duas cópias impressas de uma tese, marcadas com caneta vermelha. Elas são idênticas.",
+          "conexoes": {
+            "sul": "corredor_letras"
+          },
+          "npcs_presentes": ["prof_helena"],
+          "pistas_presentes": ["email_anonimo", "boletim_ocorrencia"]
+        },
+        {
+          "id": "corredor_letras",
+          "nome": "Corredor de Letras",
+          "descricao": "Um corredor com murais de poesia e o cheiro de livros antigos.",
+          "conexoes": {
+            "norte": "sala_prof_letras",
+            "leste": "sala_bolsistas",
+            "oeste": "biblioteca_setor_b"
+          },
+          "npcs_presentes": ["aluno_desesperado"],
+          "pistas_presentes": []
+        },
+        {
+          "id": "biblioteca_setor_b",
+          "nome": "Biblioteca (Setor B)",
+          "descricao": "Estantes altas e um silêncio quase opressor. A 'Aluna Gênio' está aqui, pálida.",
+          "conexoes": {
+            "leste": "corredor_letras"
+          },
+          "npcs_presentes": ["aluna_genio"],
+          "pistas_presentes": []
+        },
+        {
+          "id": "sala_bolsistas",
+          "nome": "Sala dos Bolsistas",
+          "descricao": "Uma sala de estudos competitiva. Vários computadores e uma tensão no ar.",
+          "conexoes": {
+            "oeste": "corredor_letras"
+          },
+          "npcs_presentes": ["aluno_manipulador"],
+          "pistas_presentes": ["log_computador_bolsista"]
+        }
+      ],
+      "npcs": [
+        {
+          "id": "prof_helena",
+          "nome": "Profa. Helena",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "Um escândalo! Recebi um e-mail anônimo. Fui checar e o trabalho da 'Aluna Gênio' é idêntico ao do 'Aluno Desesperado'. Plágio claro!"
+        },
+        {
+          "id": "aluna_genio",
+          "nome": "Aluna Gênio",
+          "tipo": "Suspeito",
+          "culpado": false,
+          "alibi": "estou refazendo meu trabalho, meu notebook foi roubado há duas semanas.",
+          "dialogo_inicial": "Eu juro, é o meu trabalho! Meu notebook foi roubado do meu armário! Eu tenho o B.O.!"
+        },
+        {
+          "id": "aluno_desesperado",
+          "nome": "Aluno Desesperado",
+          "tipo": "Suspeito",
+          "culpado": false,
+          "alibi": "eu... eu comprei o trabalho, mas não sabia que era roubado!",
+          "dialogo_inicial": "Eu não plagiei! Eu... eu comprei o trabalho! O 'Aluno Manipulador' me vendeu por R$ 500!",
+          "pista_associada": "depoimento_desesperado"
+        },
+        {
+          "id": "aluno_manipulador",
+          "nome": "Aluno Manipulador",
+          "tipo": "Suspeito",
+          "culpado": true,
+          "alibi": "estava aqui na sala de bolsistas o tempo todo. Que absurdo, vender trabalho?",
+          "dialogo_inicial": "Que horror. Todos sabem que o 'Aluno Desesperado' faria qualquer coisa para passar. E a 'Aluna Gênio' sempre foi descuidada com as coisas dela."
+        }
+      ],
+      "pistas": [
+        {
+          "id": "email_anonimo",
+          "nome": "E-mail Anônimo",
+          "tipo": "Documental",
+          "descricao": "Um e-mail enviado do webmail da universidade. 'Professora, cheque os trabalhos 045 (Gênio) e 088 (Desesperado). A senhora terá uma surpresa. - Um Amigo da Verdade'",
+          "local_encontrado": "Gabinete da Profa. Helena"
+        },
+        {
+          "id": "boletim_ocorrencia",
+          "nome": "Boletim de Ocorrência",
+          "tipo": "Documental",
+          "descricao": "Um B.O. registrado pela 'Aluna Gênio' há duas semanas, relatando furto de um notebook no armário do Bloco B.",
+          "local_encontrado": "Gabinete da Profa. Helena"
+        },
+        {
+          "id": "depoimento_desesperado",
+          "nome": "Depoimento do Aluno Desesperado",
+          "tipo": "Verbal",
+          "descricao": "Eu estava perdido! O 'Aluno Manipulador' me ofereceu ajuda. Ele disse que era um trabalho antigo de um primo e que eu podia usar. Paguei R$ 500 para ele! Eu não sabia que era da 'Aluna Gênio'!",
+          "fonte": "Aluno Desesperado"
+        },
+        {
+          "id": "log_computador_bolsista",
+          "nome": "Log do Computador",
+          "tipo": "Documental",
+          "descricao": "Log de acesso do computador 04. Mostra que o 'Aluno Manipulador' acessou o webmail da universidade 10 minutos antes do e-mail anônimo ser recebido pela professora.",
+          "local_encontrado": "Sala dos Bolsistas"
+        }
+      ]
+    },
+    "caso_5": {
+      "titulo": "O Caso da Escultura Destruída",
+      "dificuldade": "Médio",
+      "local_inicial": "galeria_artes",
+      "culpado_id": "artista_autora",
+      "locais": [
+        {
+          "id": "galeria_artes",
+          "nome": "Galeria de Artes",
+          "descricao": "O centro da galeria está coberto de destroços de mármore e metal. A 'obra-prima' foi destruída.",
+          "conexoes": {
+            "sul": "corredor_artes"
+          },
+          "npcs_presentes": ["curador_galeria"],
+          "pistas_presentes": ["panfleto_protesto", "ferramenta_crime"]
+        },
+        {
+          "id": "corredor_artes",
+          "nome": "Corredor de Artes",
+          "descricao": "Paredes manchadas de tinta e cheiro de terebintina. Câmeras de segurança piscam nos cantos.",
+          "conexoes": {
+            "norte": "galeria_artes",
+            "leste": "estudio_autora",
+            "oeste": "estudio_rival",
+            "sul": "patio_central"
+          },
+          "npcs_presentes": ["artista_rival"],
+          "pistas_presentes": ["log_camera_corredor"]
+        },
+        {
+          "id": "estudio_autora",
+          "nome": "Estúdio da Autora",
+          "descricao": "Caótico, mas organizado. Esboços da escultura destruída estão por toda parte.",
+          "conexoes": {
+            "oeste": "corredor_artes"
+          },
+          "npcs_presentes": ["artista_autora"],
+          "pistas_presentes": ["apolice_seguro", "recibo_ferramenta"]
+        },
+        {
+          "id": "patio_central",
+          "nome": "Pátio Central",
+          "descricao": "Uma área aberta onde os alunos se reúnem. Um grupo está debatendo fervorosamente.",
+          "conexoes": {
+            "norte": "corredor_artes"
+          },
+          "npcs_presentes": ["lider_protesto"],
+          "pistas_presentes": []
+        },
+        {
+          "id": "estudio_rival",
+          "nome": "Estúdio do Rival",
+          "descricao": "Uma oficina de solda. O 'Artista Rival' está trabalhando em uma peça de metal.",
+          "conexoes": {
+            "leste": "corredor_artes"
+          },
+          "npcs_presentes": [],
+          "pistas_presentes": []
+        }
+      ],
+      "npcs": [
+        {
+          "id": "curador_galeria",
+          "nome": "Curador da Galeria",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "Inacreditável! Um ato de barbárie! A 'Artista Autora' está inconsolável. Isso vai manchar o nome da universidade."
+        },
+        {
+          "id": "lider_protesto",
+          "nome": "Líder do Protesto",
+          "tipo": "Suspeito",
+          "culpado": false,
+          "alibi": "estávamos preparando os cartazes na gráfica a noite toda.",
+          "dialogo_inicial": "Nós protestamos, sim! Aquilo não era arte, era um insulto! Mas jamais destruiríamos! Nossos métodos são pacíficos!"
+        },
+        {
+          "id": "artista_rival",
+          "nome": "Artista Rival",
+          "tipo": "Suspeito",
+          "culpado": false,
+          "alibi": "estava no meu estúdio, soldando. A fumaça ativou o alarme de incêndio às 3h da manhã, podem checar.",
+          "dialogo_inicial": "Sinceramente? Ela me fez um favor. Aquilo era horrível. Mas eu não toquei. Tenho um álibi de fogo, literalmente."
+        },
+        {
+          "id": "artista_autora",
+          "nome": "Artista Autora",
+          "tipo": "Suspeito",
+          "culpado": true,
+          "alibi": "estava em casa, tentando dormir... tão chocada...",
+          "dialogo_inicial": "Minha obra... minha vida... destruída! Por aqueles vândalos intolerantes! (diz, chorando, mas secando os olhos rapidamente)"
+        }
+      ],
+      "pistas": [
+        {
+          "id": "panfleto_protesto",
+          "nome": "Panfleto (Pista Falsa)",
+          "tipo": "Fisica",
+          "descricao": "Um panfleto do grupo de protesto, largado perto dos destroços. 'Abaixo a arte imoral! Grande protesto amanhã!'",
+          "local_encontrado": "Galeria de Artes"
+        },
+        {
+          "id": "ferramenta_crime",
+          "nome": "Marreta Industrial",
+          "tipo": "Fisica",
+          "descricao": "Uma marreta pesada, claramente a arma do crime, deixada no local.",
+          "local_encontrado": "Galeria de Artes"
+        },
+        {
+          "id": "log_camera_corredor",
+          "nome": "Log da Câmera",
+          "tipo": "Documental",
+          "descricao": "A câmera do corredor mostra uma pessoa encapuzada entrando na galeria às 02:30 e saindo às 02:45. A pessoa manca levemente da perna esquerda.",
+          "local_encontrado": "Corredor de Artes"
+        },
+        {
+          "id": "apolice_seguro",
+          "nome": "Apólice de Seguro",
+          "tipo": "Documental",
+          "descricao": "Uma apólice de seguro recém-contratada no nome da 'Artista Autora', cobrindo a escultura por R$ 100.000 em caso de 'vandalismo'. Foi ativada há dois dias.",
+          "local_encontrado": "Estúdio da Autora"
+        },
+        {
+          "id": "recibo_ferramenta",
+          "nome": "Recibo da Marreta",
+          "tipo": "Documental",
+          "descricao": "Um recibo de uma loja de ferramentas, amassado no lixo. Compra de uma 'Marreta Industrial 10kg', paga em dinheiro, há três dias. O recibo tem o logo da loja.",
+          "local_encontrado": "Estúdio da Autora"
+        }
+      ]
+    },
+    "caso_6": {
+      "titulo": "O Caso do Exame Perdido",
+      "dificuldade": "Médio",
+      "local_inicial": "reprografia",
+      "culpado_id": "monitor_negligente",
+      "locais": [
+        {
+          "id": "reprografia",
+          "nome": "Reprografia",
+          "descricao": "A sala de impressão está trancada. As luzes estão apagadas, mas a porta não foi forçada.",
+          "conexoes": {
+            "sul": "corredor_adm"
+          },
+          "npcs_presentes": ["prof_furioso"],
+          "pistas_presentes": ["log_porta_repro"]
+        },
+        {
+          "id": "corredor_adm",
+          "nome": "Corredor da Administração",
+          "descricao": "Um corredor funcional, com portas para a secretaria e a reprografia.",
+          "conexoes": {
+            "norte": "reprografia",
+            "leste": "cantina",
+            "oeste": "secretaria"
+          },
+          "npcs_presentes": ["monitor_negligente"],
+          "pistas_presentes": []
+        },
+        {
+          "id": "secretaria",
+          "nome": "Secretaria",
+          "descricao": "Balcões, telefones e o som de impressoras.",
+          "conexoes": {
+            "leste": "corredor_adm"
+          },
+          "npcs_presentes": ["secretaria_beth"],
+          "pistas_presentes": []
+        },
+        {
+          "id": "cantina",
+          "nome": "Cantina",
+          "descricao": "Cheiro de café requentado e pão de queijo. Mesas vazias.",
+          "conexoes": {
+            "oeste": "corredor_adm"
+          },
+          "npcs_presentes": ["tia_cantina"],
+          "pistas_presentes": ["log_camera_cantina"]
+        }
+      ],
+      "npcs": [
+        {
+          "id": "prof_furioso",
+          "nome": "Professor Furioso",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "O exame final de Cálculo! 500 cópias! O monitor disse que trancou tudo, mas sumiu! A prova é amanhã! Foi sabotagem!"
+        },
+        {
+          "id": "secretaria_beth",
+          "nome": "Secretária Beth",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "Sabotagem? Que nada. O 'Monitor Negligente' é um bom menino, mas vive no mundo da lua. Ele passou aqui ontem parecendo um zumbi.",
+          "pista_associada": "depoimento_secretaria"
+        },
+        {
+          "id": "tia_cantina",
+          "nome": "Tia da Cantina",
+          "tipo": "Testemunha",
+          "dialogo_inicial": "Boa noite, filho. Crime? Aqui? A única coisa que aconteceu foi eu jogar fora uma pasta de papelão que algum aluno esquecido deixou aqui ontem.",
+          "pista_associada": "depoimento_cantina"
+        },
+        {
+          "id": "monitor_negligente",
+          "nome": "Monitor Negligente",
+          "tipo": "Suspeito",
+          "culpado": true,
+          "alibi": "eu peguei a matriz na secretaria, levei para a reprografia e tranquei a porta!",
+          "dialogo_inicial": "Eu juro, detetive! Eu tranquei a porta da reprografia! Deve ter sido um hacker ou alguém que clonou o cartão!"
+        }
+      ],
+      "pistas": [
+        {
+          "id": "log_porta_repro",
+          "nome": "Log da Porta (Reprografia)",
+          "tipo": "Documental",
+          "descricao": "A porta da reprografia não foi aberta desde as 15:00 de ontem, quando o 'Monitor Negligente' a usou.",
+          "local_encontrado": "Reprografia"
+        },
+        {
+          "id": "depoimento_secretaria",
+          "nome": "Depoimento da Secretária",
+          "tipo": "Verbal",
+          "descricao": "O monitor pegou a pasta-matriz do exame comigo às 17:00. Ele parecia exausto e disse que ia 'tomar um café antes de imprimir'.",
+          "fonte": "Secretária Beth"
+        },
+        {
+          "id": "log_camera_cantina",
+          "nome": "Câmera da Cantina",
+          "tipo": "Documental",
+          "descricao": "Gravação das 17:05 de ontem. O 'Monitor Negligente' entra, compra um café, senta-se, mexe no celular e sai às 17:15... *deixando a pasta de papelão na mesa*.",
+          "local_encontrado": "Cantina"
+        },
+        {
+          "id": "depoimento_cantina",
+          "nome": "Depoimento da Tia da Cantina",
+          "tipo": "Verbal",
+          "descricao": "Ah, sim, a pasta de papelão. Estava na mesa 5. Na hora de fechar, às 18:00, como ninguém buscou, eu joguei no lixo da reciclagem. O caminhão já passou hoje de manhã.",
+          "fonte": "Tia da Cantina"
+        }
+      ]
     }
   }
 }
