@@ -1,8 +1,9 @@
+from __future__ import annotations
+from typing import Optional
+from typing import TYPE_CHECKING
+
 from src.jogo.personagens.npc import NPC
 from src.jogo.pistas.pista import Pista
-from typing import Optional
-from __future__ import annotations
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.jogo.detetive import Detetive
